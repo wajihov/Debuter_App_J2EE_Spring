@@ -28,7 +28,7 @@ public interface IBanqueMetier {
 
 	public Compte consulterCompte(String codeCpte);
 
-	public List<Operation> consulterOperation(String compte);
+	public List<Operation> consulterOperation(String codeCompte, int position, int nbOp);
 
 	public Client consulterClient(Long codeClient);
 
@@ -43,4 +43,6 @@ public interface IBanqueMetier {
 	public List<Groupe> getGroupes();
 
 	public List<Employer> getEmployerByGroupe(Long codeGr);
+	
+	public long getNbreOperation(String numCompte);
 }

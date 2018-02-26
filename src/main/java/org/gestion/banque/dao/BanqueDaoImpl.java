@@ -71,15 +71,18 @@ public class BanqueDaoImpl implements IBanqueDao {
 	public Compte consulterCompte(String codeCpte) {
 		Compte compte = em.find(Compte.class, codeCpte);
 		if (compte == null)
-			throw new RuntimeException("Compte inexistent");
+			throw new RuntimeException("Compte : " + codeCpte + "  : inexistent");
 		return compte;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Operation> consulterOperation(String compte) {
-		Query query = em.createQuery("select o from Operation o where o.compte.codeCompte=:x");
-		query.setParameter("x", compte);
+	public List<Operation> consulterOperation(String codeCompte, int position, int nbOp) {
+		Query query = em
+				.createQuery("select o from Operation o where o.compte.codeCompte=:x order by o.dateOperation desc");
+		query.setParameter("x", codeCompte);
+		query.setFirstResult(position);
+		query.setMaxResults(nbOp);
 		return query.getResultList();
 	}
 
@@ -135,6 +138,13 @@ public class BanqueDaoImpl implements IBanqueDao {
 		Query query = em.createQuery("select e from Employer e where e.groupes.codeGroupe = :x");
 		query.setParameter("x", codeGr);
 		return query.getResultList();
+	}
+
+	@Override
+	public long getNbreOperation(String numCompte) {
+		Query query = em.createQuery("select count(o) from Operation o where o.compte.codeCompte=:x ");
+		query.setParameter("x", numCompte);
+		return (Long) query.getResultList().get(0);
 	}
 
 }

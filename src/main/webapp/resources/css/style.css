@@ -1,0 +1,41 @@
+body {
+	background: #e9e9e9;
+}
+
+div {
+	border: 1px dotted gray;
+	padding: 10px;
+	margin: 10px;
+}
+
+.table1 th {
+	border: 1px dotted gray;
+	padding: 10px;
+	margin: 10px;
+	background: pink;
+}
+
+.table1 td {
+	border: 1px dotted gray;
+	padding: 10px;
+	margin: 10px;
+	background: lime;
+}
+
+span.current {
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 5px;
+	background: pink;
+}
+
+span.autresPages {
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 5px;
+	background: #aeffc2;
+}
+
+.error {
+	color: red;
+}

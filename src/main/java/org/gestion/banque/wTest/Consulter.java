@@ -20,7 +20,7 @@ public class Consulter {
 		System.out.println("le client est : " + cp.getClient().getNomClient());
 		System.out.println("l'employer est : " + cp.getEmployer().getNomEmployer());
 
-		List<Operation> ops = metier.consulterOperation("CC1");
+		List<Operation> ops = metier.consulterOperation("CC1", 0, 5);
 		for (Operation op : ops) {
 			System.out.println("**********");
 			System.out.println(op.getNumOperation());
